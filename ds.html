@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>১১. Data Structures | ডেটা স্ট্রাকচার</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">১১. ডেটা স্ট্রাকচার (Java তে ইমপ্লিমেন্টেশন)</h1>
+    <h1 class="en">11. Data Structures (Java Implementation)</h1>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.১</span> Stack (Array)</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> LIFO — top দিয়ে ট্র্যাক। push এ top++, pop এ top--।</div>
+          <div class="en"><strong>Memory Tip:</strong> LIFO — track with top. ++top on push, top-- on pop.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static final int MAX = 5;
+    static int[] stackArr = new int[MAX];
+    static int top = -1;
+
+    static void push(int val) {
+        if (top == MAX - 1) { System.out.println("Stack Overflow"); return; }
+        stackArr[++top] = val;
+    }
+    static int pop() {
+        if (top == -1) { System.out.println("Stack Underflow"); return -1; }
+        return stackArr[top--];
+    }
+    public static void main(String[] args) {
+        push(10); push(20); push(30);
+        System.out.println("Pop: " + pop());
+        System.out.println("Pop: " + pop());
+    }
+}</code></pre>
+        </div>
+        <div class="output">Pop: 30
+Pop: 20</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.২</span> Stack (Linked List)</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> নতুন নোড সবসময় head এর সামনে যোগ হয়। null এর বদলে null, delete লাগে না।</div>
+          <div class="en"><strong>Memory Tip:</strong> New node always added at front (top). Use null, no delete needed (GC).</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static class Node {
+        int data;
+        Node next;
+        Node(int data) { this.data = data; }
+    }
+    static Node top = null;
+
+    static void push(int val) {
+        Node newNode = new Node(val);
+        newNode.next = top;
+        top = newNode;
+    }
+    static int pop() {
+        if (top == null) { System.out.println("Stack Empty"); return -1; }
+        int val = top.data;
+        top = top.next;
+        return val;
+    }
+    public static void main(String[] args) {
+        push(10); push(20); push(30);
+        System.out.println("Pop: " + pop());
+        System.out.println("Pop: " + pop());
+    }
+}</code></pre>
+        </div>
+        <div class="output">Pop: 30
+Pop: 20</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.৩</span> Queue (Array)</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> FIFO — front থেকে বের হয়, rear এ ঢুকে।</div>
+          <div class="en"><strong>Memory Tip:</strong> FIFO — dequeue from front, enqueue at rear.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static final int MAX = 5;
+    static int[] queueArr = new int[MAX];
+    static int front = -1, rear = -1;
+
+    static void enqueue(int val) {
+        if (rear == MAX - 1) { System.out.println("Queue Full"); return; }
+        if (front == -1) front = 0;
+        queueArr[++rear] = val;
+    }
+    static int dequeue() {
+        if (front == -1 || front > rear) { System.out.println("Queue Empty"); return -1; }
+        return queueArr[front++];
+    }
+    public static void main(String[] args) {
+        enqueue(10); enqueue(20); enqueue(30);
+        System.out.println("Dequeue: " + dequeue());
+        System.out.println("Dequeue: " + dequeue());
+    }
+}</code></pre>
+        </div>
+        <div class="output">Dequeue: 10
+Dequeue: 20</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.৪</span> Circular Queue</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> (rear+1) % MAX সূত্র ব্যবহার করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Use (rear+1) % MAX for circular behavior.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static final int MAX = 5;
+    static int[] cqueue = new int[MAX];
+    static int front = -1, rear = -1;
+
+    static void enqueue(int val) {
+        if ((rear + 1) % MAX == front) { System.out.println("Queue Full"); return; }
+        if (front == -1) front = 0;
+        rear = (rear + 1) % MAX;
+        cqueue[rear] = val;
+    }
+    static int dequeue() {
+        if (front == -1) { System.out.println("Queue Empty"); return -1; }
+        int val = cqueue[front];
+        if (front == rear) front = rear = -1;
+        else front = (front + 1) % MAX;
+        return val;
+    }
+    public static void main(String[] args) {
+        enqueue(1); enqueue(2); enqueue(3);
+        System.out.println("Dequeue: " + dequeue());
+        enqueue(4);
+        System.out.println("Dequeue: " + dequeue());
+    }
+}</code></pre>
+        </div>
+        <div class="output">Dequeue: 1
+Dequeue: 2</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.৫</span> Linked List</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> প্রতিটি নোডে data + next। -> নেই — সবসময় . (dot) ব্যবহার হয়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Each node has data + next. No -> operator — always use dot.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static class Node {
+        int data;
+        Node next;
+        Node(int data) { this.data = data; }
+    }
+    static Node head = null;
+
+    static void insert(int val) {
+        Node newNode = new Node(val);
+        if (head == null) { head = newNode; return; }
+        Node temp = head;
+        while (temp.next != null) temp = temp.next;
+        temp.next = newNode;
+    }
+    static void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("NULL");
+    }
+    public static void main(String[] args) {
+        insert(10); insert(20); insert(30);
+        display();
+    }
+}</code></pre>
+        </div>
+        <div class="output">10 -> 20 -> 30 -> NULL</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.৬</span> Doubly Linked List</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> prev + next দুইটা রেফারেন্স — দুই দিকে যাওয়া যায়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Each node has prev and next — can traverse both directions.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static class Node {
+        int data;
+        Node prev, next;
+        Node(int data) { this.data = data; }
+    }
+    static Node head = null;
+
+    static void insert(int val) {
+        Node newNode = new Node(val);
+        newNode.next = head;
+        if (head != null) head.prev = newNode;
+        head = newNode;
+    }
+    static void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " <-> ");
+            temp = temp.next;
+        }
+        System.out.println("NULL");
+    }
+    public static void main(String[] args) {
+        insert(30); insert(20); insert(10);
+        display();
+    }
+}</code></pre>
+        </div>
+        <div class="output">10 <-> 20 <-> 30 <-> NULL</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.৭</span> Circular Linked List</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> শেষ নোডের next = head — কোনো null থাকে না।</div>
+          <div class="en"><strong>Memory Tip:</strong> Last node's next points to head — no null, forms a circle.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static class Node {
+        int data;
+        Node next;
+        Node(int data) { this.data = data; }
+    }
+    static Node head = null;
+
+    static void insert(int val) {
+        Node newNode = new Node(val);
+        if (head == null) {
+            head = newNode;
+            newNode.next = head;
+            return;
+        }
+        Node temp = head;
+        while (temp.next != head) temp = temp.next;
+        temp.next = newNode;
+        newNode.next = head;
+    }
+    static void display() {
+        if (head == null) return;
+        Node temp = head;
+        do {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        } while (temp != head);
+        System.out.println("(head)");
+    }
+    public static void main(String[] args) {
+        insert(10); insert(20); insert(30);
+        display();
+    }
+}</code></pre>
+        </div>
+        <div class="output">10 -> 20 -> 30 -> (head)</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.৮</span> Binary Search Tree (BST)</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> বামের সব ছোট, ডানের সব বড়। insert এ তুলনা করে বাম/ডানে যাও।</div>
+          <div class="en"><strong>Memory Tip:</strong> Left subtree smaller, right larger. Compare and go left/right on insert.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static class Node {
+        int data;
+        Node left, right;
+        Node(int data) { this.data = data; }
+    }
+    static Node insert(Node root, int val) {
+        if (root == null) return new Node(val);
+        if (val < root.data) root.left = insert(root.left, val);
+        else root.right = insert(root.right, val);
+        return root;
+    }
+    static void inorder(Node root) {
+        if (root == null) return;
+        inorder(root.left);
+        System.out.print(root.data + " ");
+        inorder(root.right);
+    }
+    public static void main(String[] args) {
+        Node root = null;
+        int[] vals = {50, 30, 70, 20, 40, 60, 80};
+        for (int v : vals) root = insert(root, v);
+        inorder(root);
+        System.out.println();
+    }
+}</code></pre>
+        </div>
+        <div class="output">20 30 40 50 60 70 80</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.৯</span> Tree Traversal</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> Preorder: Root-Left-Right | Inorder: Left-Root-Right | Postorder: Left-Right-Root</div>
+          <div class="en"><strong>Memory Tip:</strong> Preorder: Root-Left-Right | Inorder: Left-Root-Right | Postorder: Left-Right-Root</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static class Node {
+        int data;
+        Node left, right;
+        Node(int data) { this.data = data; }
+    }
+    static void preorder(Node r) {
+        if (r == null) return;
+        System.out.print(r.data + " ");
+        preorder(r.left);
+        preorder(r.right);
+    }
+    static void inorder(Node r) {
+        if (r == null) return;
+        inorder(r.left);
+        System.out.print(r.data + " ");
+        inorder(r.right);
+    }
+    static void postorder(Node r) {
+        if (r == null) return;
+        postorder(r.left);
+        postorder(r.right);
+        System.out.print(r.data + " ");
+    }
+    public static void main(String[] args) {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        System.out.print("Preorder: "); preorder(root); System.out.println();
+        System.out.print("Inorder: "); inorder(root); System.out.println();
+        System.out.print("Postorder: "); postorder(root); System.out.println();
+    }
+}</code></pre>
+        </div>
+        <div class="output">Preorder: 1 2 4 5 3 
+Inorder: 4 2 5 1 3 
+Postorder: 4 5 2 3 1</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.১০</span> BFS</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> Queue ব্যবহার করে লেভেল বাই লেভেল। visited অ্যারে রাখো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Use Queue for level-by-level. Keep a visited array.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static final int V = 5;
+    static int[][] adj = {
+        {0,1,1,0,0}, {1,0,0,1,0}, {1,0,0,0,1},
+        {0,1,0,0,1}, {0,0,1,1,0}
+    };
+    static boolean[] visited = new boolean[V];
+    static int[] q = new int[V];
+    static int front = -1, rear = -1;
+
+    static void enqueue(int x) { q[++rear] = x; }
+    static int dequeue() { return q[++front]; }
+    static boolean isEmpty() { return front == rear; }
+
+    static void bfs(int start) {
+        enqueue(start);
+        visited[start] = true;
+        while (!isEmpty()) {
+            int node = dequeue();
+            System.out.print(node + " ");
+            for (int i = 0; i < V; i++)
+                if (adj[node][i] == 1 && !visited[i]) {
+                    enqueue(i);
+                    visited[i] = true;
+                }
+        }
+    }
+    public static void main(String[] args) {
+        System.out.print("BFS: ");
+        bfs(0);
+        System.out.println();
+    }
+}</code></pre>
+        </div>
+        <div class="output">BFS: 0 1 2 3 4</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১১.১১</span> DFS</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> রিকার্সন দিয়ে একটা পথ ধরে যতদূর সম্ভব যাও।</div>
+          <div class="en"><strong>Memory Tip:</strong> Use recursion to go as deep as possible along one path.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static final int V = 5;
+    static int[][] adj = {
+        {0,1,1,0,0}, {1,0,0,1,0}, {1,0,0,0,1},
+        {0,1,0,0,1}, {0,0,1,1,0}
+    };
+    static boolean[] visited = new boolean[V];
+
+    static void dfs(int node) {
+        visited[node] = true;
+        System.out.print(node + " ");
+        for (int i = 0; i < V; i++)
+            if (adj[node][i] == 1 && !visited[i])
+                dfs(i);
+    }
+    public static void main(String[] args) {
+        System.out.print("DFS: ");
+        dfs(0);
+        System.out.println();
+    }
+}</code></pre>
+        </div>
+        <div class="output">DFS: 0 1 3 4 2</div>
+      </div>
+    </article>
+
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="memory.html">← Memory</a> • Data Structures • <a href="exam.html">Next: Exam Programs →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

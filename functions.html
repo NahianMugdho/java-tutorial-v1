@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>৬. Function Programs | ফাংশন প্রোগ্রাম</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">৬. ফাংশন (মেথড) প্রোগ্রাম</h1>
+    <h1 class="en">6. Function (Method) Programs</h1>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৬.১</span> Recursive Factorial</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> বেস কেস n&lt;=1 হলে return 1, নাহলে n * fact(n-1)। মেথড static হতে হয়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Base case: n&lt;=1 return 1, else n * fact(n-1). Method must be static.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static long fact(int n) {
+        if (n <= 1) return 1;
+        return n * fact(n - 1);
+    }
+    public static void main(String[] args) {
+        int n = 5;
+        System.out.println(n + "! = " + fact(n));
+    }
+}</code></pre>
+        </div>
+        <div class="output">5! = 120</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৬.২</span> Recursive Fibonacci</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> বেস কেস n==0 বা n==1, নাহলে fib(n-1) + fib(n-2)।</div>
+          <div class="en"><strong>Memory Tip:</strong> Base: n==0 or 1, else fib(n-1) + fib(n-2).</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static int fib(int n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        return fib(n - 1) + fib(n - 2);
+    }
+    public static void main(String[] args) {
+        int n = 8;
+        for (int i = 0; i < n; i++)
+            System.out.print(fib(i) + " ");
+        System.out.println();
+    }
+}</code></pre>
+        </div>
+        <div class="output">0 1 1 2 3 5 8 13</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৬.৩</span> Recursive GCD</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> gcd(a,b) = gcd(b, a%b), b==0 হলে a।</div>
+          <div class="en"><strong>Memory Tip:</strong> gcd(a,b) = gcd(b, a%b), when b==0 return a.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+    public static void main(String[] args) {
+        System.out.println("GCD = " + gcd(48, 18));
+    }
+}</code></pre>
+        </div>
+        <div class="output">GCD = 6</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৬.৪</span> Call by Value vs Call by Reference</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> Java তে সবসময় Call by Value। primitive কপি যায়। অ্যারে/অবজেক্ট পাঠালে রেফারেন্সের কপি যায় — ভিতরের ডেটা বদলালে মূল বদলায়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Java is always Call by Value. Primitives are copied. Arrays/objects pass a copy of the reference — modifying contents affects original.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static void byValue(int x) {
+        x = x + 10;
+    }
+    static void byArray(int[] x) {
+        x[0] = x[0] + 10;
+    }
+    public static void main(String[] args) {
+        int a = 5;
+        byValue(a);
+        System.out.println("byValue এর পর a = " + a + " (অপরিবর্তিত)");
+        int[] box = {5};
+        byArray(box);
+        System.out.println("byArray এর পর box[0] = " + box[0] + " (পরিবর্তিত)");
+    }
+}</code></pre>
+        </div>
+        <div class="output">byValue এর পর a = 5 (অপরিবর্তিত)
+byArray এর পর box[0] = 15 (পরিবর্তিত)</div>
+      </div>
+    </article>
+
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="strings.html">← Strings</a> • Functions • <a href="references.html">Next: References →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

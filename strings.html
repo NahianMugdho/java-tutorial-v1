@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>৫. String Programs | স্ট্রিং প্রোগ্রাম</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">৫. স্ট্রিং প্রোগ্রাম (String Programs)</h1>
+    <h1 class="en">5. String Programs</h1>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৫.১</span> String Length (manual)</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> String immutable। দৈর্ঘ্য পেতে <code>str.length()</code> (ব্র্যাকেট সহ)। অ্যারের <code>.length</code> এর সাথে গুলিয়ে ফেলো না।</div>
+          <div class="en"><strong>Memory Tip:</strong> String is immutable. Use <code>str.length()</code> (with parentheses). Don't confuse with array's <code>.length</code>.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        String str = "Bangladesh";
+        int len = 0;
+        for (char c : str.toCharArray()) len++;
+        System.out.println("দৈর্ঘ্য = " + len);
+    }
+}</code></pre>
+        </div>
+        <div class="output">দৈর্ঘ্য = 10</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৫.২</span> String Copy</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> = দিয়ে রেফারেন্স কপি হয়। নতুন অবজেক্ট চাইলে <code>new String(src)</code>।</div>
+          <div class="en"><strong>Memory Tip:</strong> = copies the reference. Use <code>new String(src)</code> for a new object.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        String src = "Hello";
+        String dest = src;
+        String copy = new String(src);
+        System.out.println("কপি করা স্ট্রিং: " + dest);
+        src = "World";
+        System.out.println("src = " + src + ", dest = " + dest + ", copy = " + copy);
+    }
+}</code></pre>
+        </div>
+        <div class="output">কপি করা স্ট্রিং: Hello
+src = World, dest = Hello, copy = Hello</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৫.৩</span> String Compare</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> মান তুলনায় অবশ্যই <code>.equals()</code> ব্যবহার করো — == নয়! == শুধু রেফারেন্স দেখে।</div>
+          <div class="en"><strong>Memory Tip:</strong> Always use <code>.equals()</code> for content comparison. == only checks reference equality.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        String s1 = "abc", s2 = "abd";
+        boolean isEqual = s1.equals(s2);
+        System.out.println(isEqual ? "স্ট্রিং সমান" : "স্ট্রিং ভিন্ন");
+        System.out.println("compareTo = " + s1.compareTo(s2));
+        String a = "abc";
+        String b = new String("abc");
+        System.out.println("a == b : " + (a == b));
+        System.out.println("a.equals(b) : " + a.equals(b));
+    }
+}</code></pre>
+        </div>
+        <div class="output">স্ট্রিং ভিন্ন
+compareTo = -1
+a == b : false
+a.equals(b) : true</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৫.৪</span> String Reverse</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> String immutable বলে toCharArray() করে swap করো। শর্টকাট: <code>new StringBuilder(str).reverse().toString()</code></div>
+          <div class="en"><strong>Memory Tip:</strong> Convert to char array, swap, then new String. Shortcut: StringBuilder reverse.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        String str = "Bangladesh";
+        char[] arr = str.toCharArray();
+        int len = arr.length;
+        for (int i = 0, j = len - 1; i < j; i++, j--) {
+            char t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
+        }
+        System.out.println("উল্টানো স্ট্রিং: " + new String(arr));
+    }
+}</code></pre>
+        </div>
+        <div class="output">উল্টানো স্ট্রিং: hsedalgnaB</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৫.৫</span> Palindrome String</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> দুই প্রান্ত থেকে তুলনা করো। অক্ষর অ্যাক্সেস: <code>str.charAt(i)</code></div>
+          <div class="en"><strong>Memory Tip:</strong> Compare characters from both ends. Access with <code>str.charAt(i)</code></div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        String str = "madam";
+        int len = str.length();
+        boolean isPalindrome = true;
+        for (int i = 0; i < len / 2; i++)
+            if (str.charAt(i) != str.charAt(len - 1 - i)) {
+                isPalindrome = false; break;
+            }
+        System.out.println(isPalindrome ? "প্যালিনড্রোম" : "প্যালিনড্রোম নয়");
+    }
+}</code></pre>
+        </div>
+        <div class="output">প্যালিনড্রোম</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৫.৬</span> Count Vowels/Consonants</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> <code>Character.toLowerCase(ch)</code> ব্যবহার করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Use <code>Character.toLowerCase(ch)</code> for case-insensitive check.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        String str = "Bangladesh";
+        int vowels = 0, consonants = 0;
+        for (char ch : str.toCharArray()) {
+            ch = Character.toLowerCase(ch);
+            if (ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') vowels++;
+            else if (ch >= 'a' && ch <= 'z') consonants++;
+        }
+        System.out.println("স্বরবর্ণ = " + vowels + ", ব্যঞ্জনবর্ণ = " + consonants);
+    }
+}</code></pre>
+        </div>
+        <div class="output">স্বরবর্ণ = 3, ব্যঞ্জনবর্ণ = 7</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৫.৭</span> Count Words</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> স্পেস থেকে non-space এ ট্রানজিশন হলেই নতুন শব্দ।</div>
+          <div class="en"><strong>Memory Tip:</strong> Count a new word on transition from space to non-space.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        String str = "I love Bangladesh";
+        int count = 0;
+        for (int i = 0; i < str.length(); i++)
+            if (str.charAt(i) != ' ' && (i == 0 || str.charAt(i - 1) == ' '))
+                count++;
+        System.out.println("শব্দ সংখ্যা = " + count);
+    }
+}</code></pre>
+        </div>
+        <div class="output">শব্দ সংখ্যা = 3</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৫.৮</span> Character Frequency</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> freq[26] অ্যারে রাখো। <code>new int[26]</code> নিজে থেকেই 0 হয়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Use freq[26] array. <code>new int[26]</code> is automatically zero-filled.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        String str = "programming";
+        int[] freq = new int[26];
+        for (char ch : str.toCharArray())
+            freq[Character.toLowerCase(ch) - 'a']++;
+        for (int i = 0; i < 26; i++)
+            if (freq[i] > 0)
+                System.out.println((char) ('a' + i) + ": " + freq[i] + " বার");
+    }
+}</code></pre>
+        </div>
+        <div class="output">a: 1 বার
+g: 2 বার
+i: 1 বার
+m: 2 বার
+n: 1 বার
+o: 1 বার
+p: 1 বার
+r: 2 বার</div>
+      </div>
+    </article>
+
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="arrays.html">← Arrays</a> • String Programs • <a href="functions.html">Next: Functions →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>৩. Pattern Programs | প্যাটার্ন প্রোগ্রাম</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">৩. প্যাটার্ন প্রোগ্রাম (Pattern Programs)</h1>
+    <h1 class="en">3. Pattern Programs</h1>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৩.১</span> Right Triangle (*)</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> বাইরের লুপ সারি, ভিতরের লুপ কলাম — সারি নাম্বার অনুযায়ী * প্রিন্ট করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Outer loop = rows, inner loop = columns. Print * equal to row number.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++)
+                System.out.print("* ");
+            System.out.println();
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="output">* 
+* * 
+* * * 
+* * * * 
+* * * * *</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৩.২</span> Inverted Triangle</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> বাইরের লুপ n থেকে 1 পর্যন্ত কমতে থাকবে।</div>
+          <div class="en"><strong>Memory Tip:</strong> Outer loop decreases from n to 1.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= i; j++)
+                System.out.print("* ");
+            System.out.println();
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="output">* * * * * 
+* * * * 
+* * * 
+* * 
+*</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৩.৩</span> Pyramid</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> প্রথমে স্পেস (n-i বার), তারপর স্টার (2*i-1 বার)।</div>
+          <div class="en"><strong>Memory Tip:</strong> First print spaces (n-i times), then stars (2*i-1 times).</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            for (int s = 1; s <= n - i; s++) System.out.print(" ");
+            for (int j = 1; j <= 2 * i - 1; j++) System.out.print("*");
+            System.out.println();
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="output">    *
+   ***
+  *****
+ *******
+*********</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৩.৪</span> Floyd's Triangle</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> একটি কাউন্টার (num) রাখো যেটা প্রতিটি প্রিন্টে ১ করে বাড়বে।</div>
+          <div class="en"><strong>Memory Tip:</strong> Keep a counter that increments on every print.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int n = 5, num = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++)
+                System.out.print(num++ + " ");
+            System.out.println();
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="output">1 
+2 3 
+4 5 6 
+7 8 9 10 
+11 12 13 14 15</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৩.৫</span> Pascal's Triangle</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> প্রতিটি সংখ্যা = উপরের দুইটার যোগফল। সূত্র: val = val * (i-j) / (j+1)</div>
+          <div class="en"><strong>Memory Tip:</strong> Each number is sum of two above. Formula: val = val * (i-j) / (j+1)</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = 0; i < n; i++) {
+            int val = 1;
+            for (int s = 0; s < n - i - 1; s++) System.out.print(" ");
+            for (int j = 0; j <= i; j++) {
+                System.out.print(val + " ");
+                val = val * (i - j) / (j + 1);
+            }
+            System.out.println();
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="output">    1 
+   1 1 
+  1 2 1 
+ 1 3 3 1 
+1 4 6 4 1</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৩.৬</span> Number Pattern</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> ভিতরের লুপে j নিজেই প্রিন্ট হয় (1,2,3...i)।</div>
+          <div class="en"><strong>Memory Tip:</strong> Inner loop prints j itself (1 to i).</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++)
+                System.out.print(j + " ");
+            System.out.println();
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="output">1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 3 4 5</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৩.৭</span> Alphabet Pattern</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> <code>'A' + j</code> করলে অক্ষর পাওয়া যায়। char + int = int হয়, তাই (char) cast লাগে।</div>
+          <div class="en"><strong>Memory Tip:</strong> <code>'A' + j</code> gives the letter. Cast to (char) because char + int becomes int.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++)
+                System.out.print((char) ('A' + j) + " ");
+            System.out.println();
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="output">A 
+A B 
+A B C 
+A B C D 
+A B C D E</div>
+      </div>
+    </article>
+
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="loops.html">← Loops</a> • Pattern Programs • <a href="arrays.html">Next: Arrays →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

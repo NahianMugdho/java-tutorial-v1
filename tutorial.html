@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>০. Beginner Tutorial | জাভা শুরুর টিউটোরিয়াল</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html" class="active">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">০. জাভা শুরুর টিউটোরিয়াল (Complete Beginner Guide)</h1>
+    <h1 class="en">0. Java Beginner Tutorial (Complete Beginner Guide)</h1>
+
+    <p class="bn">যদি তুমি জাভা একেবারে নতুন হও, তাহলে এই পেজটা আগে পড়ো। এখানে ব্যাখ্যা করা হয়েছে — জাভা কী, কেন শেখবে, কীভাবে কাজ করে, এবং একটি প্রোগ্রামের বেসিক স্ট্রাকচার।</p>
+    <p class="en">If you are completely new to Java, read this page first. It explains what Java is, why you should learn it, how it works, and the basic structure of a Java program.</p>
+
+    <!-- What is Java -->
+    <article class="program">
+      <div class="program-header"><h3>১. জাভা কী? / What is Java?</h3></div>
+      <div class="program-body">
+        <div class="lang-section bn">
+          <p>জাভা (Java) একটি <strong>অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিং ল্যাঙ্গুয়েজ</strong>। এটি ১৯৯৫ সালে সান মাইক্রোসিস্টেমস (এখন ওরাকল) তৈরি করে। জাভার সবচেয়ে বড় বৈশিষ্ট্য হলো — <strong>“Write Once, Run Anywhere”</strong>। অর্থাৎ একবার কোড লিখলে যেকোনো অপারেটিং সিস্টেমে (Windows, Linux, Mac, Android) চালানো যায়।</p>
+        </div>
+        <div class="lang-section en">
+          <p>Java is an <strong>object-oriented programming language</strong> created by Sun Microsystems (now Oracle) in 1995. Its biggest strength is <strong>“Write Once, Run Anywhere”</strong> — you write the code once and it can run on any operating system (Windows, Linux, Mac, Android).</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Why use Java -->
+    <article class="program">
+      <div class="program-header"><h3>২. জাভা কেন শিখবে? কোন কাজে ব্যবহার হয়? / Why Learn Java? Where is it used?</h3></div>
+      <div class="program-body">
+        <div class="lang-section bn">
+          <p><strong>জাভা মূলত যেসব কাজে ব্যবহার হয়:</strong></p>
+          <ul style="padding-left:1.5rem; margin-bottom:1rem;">
+            <li><strong>অ্যান্ড্রয়েড অ্যাপ ডেভেলপমেন্ট</strong> — পৃথিবীর সবচেয়ে জনপ্রিয় মোবাইল অ্যাপের ভাষা (Kotlin এর সাথে)</li>
+            <li><strong>ব্যাংকিং ও এন্টারপ্রাইজ সফটওয়্যার</strong> — বড় বড় কোম্পানি, ব্যাংক, সরকারি সিস্টেম</li>
+            <li><strong>ওয়েব ব্যাকএন্ড</strong> — Spring Boot ফ্রেমওয়ার্ক দিয়ে শক্তিশালী API ও সার্ভার</li>
+            <li><strong>বড় ডেটা ও ক্লাউড</strong> — Hadoop, Apache Kafka, AWS, Google Cloud</li>
+            <li><strong>ডেস্কটপ অ্যাপ্লিকেশন</strong> — Swing / JavaFX দিয়ে</li>
+            <li><strong>গেম ডেভেলপমেন্ট</strong> — কিছু গেম ইঞ্জিনে ব্যবহার হয়</li>
+          </ul>
+          <p><strong>কেন শিখবে?</strong></p>
+          <ul style="padding-left:1.5rem;">
+            <li>চাকরির বাজারে অনেক ডিমান্ড</li>
+            <li>সিনট্যাক্স পরিষ্কার ও শেখার জন্য ভালো</li>
+            <li>একবার শিখলে অন্যান্য ভাষা (C#, Kotlin, JavaScript) শিখতে সহজ হয়</li>
+            <li>বড় স্কেলের সফটওয়্যার বানানোর জন্য নির্ভরযোগ্য</li>
+          </ul>
+        </div>
+        <div class="lang-section en">
+          <p><strong>Main uses of Java:</strong></p>
+          <ul style="padding-left:1.5rem; margin-bottom:1rem;">
+            <li><strong>Android App Development</strong> — one of the most popular languages for mobile apps (along with Kotlin)</li>
+            <li><strong>Banking & Enterprise Software</strong> — large companies, banks, government systems</li>
+            <li><strong>Web Backend</strong> — powerful APIs and servers with Spring Boot</li>
+            <li><strong>Big Data & Cloud</strong> — Hadoop, Apache Kafka, AWS, Google Cloud</li>
+            <li><strong>Desktop Applications</strong> — using Swing / JavaFX</li>
+            <li><strong>Game Development</strong> — used in some game engines</li>
+          </ul>
+          <p><strong>Why learn it?</strong></p>
+          <ul style="padding-left:1.5rem;">
+            <li>High demand in job market</li>
+            <li>Clean syntax, good for beginners</li>
+            <li>Makes learning other languages (C#, Kotlin, JS) easier</li>
+            <li>Very reliable for large-scale software</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- How Java works -->
+    <article class="program">
+      <div class="program-header"><h3>৩. জাভা কীভাবে কাজ করে? / How does Java work?</h3></div>
+      <div class="program-body">
+        <div class="lang-section bn">
+          <ol style="padding-left:1.5rem;">
+            <li>তুমি <code>.java</code> ফাইলে কোড লেখো।</li>
+            <li><code>javac</code> কম্পাইলার সেটাকে <strong>bytecode</strong> (<code>.class</code> ফাইল) এ রূপান্তর করে।</li>
+            <li>যেকোনো কম্পিউটারে <strong>JVM (Java Virtual Machine)</strong> থাকলে সেই bytecode চালাতে পারে।</li>
+          </ol>
+          <p>এজন্যই একই কোড Windows, Linux, Mac সব জায়গায় চলে।</p>
+        </div>
+        <div class="lang-section en">
+          <ol style="padding-left:1.5rem;">
+            <li>You write code in a <code>.java</code> file.</li>
+            <li>The <code>javac</code> compiler converts it into <strong>bytecode</strong> (<code>.class</code> file).</li>
+            <li>Any computer that has a <strong>JVM (Java Virtual Machine)</strong> can run that bytecode.</li>
+          </ol>
+          <p>That’s why the same code runs on Windows, Linux, and Mac.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Basic Structure -->
+    <article class="program">
+      <div class="program-header"><h3>৪. একটি জাভা প্রোগ্রামের বেসিক স্ট্রাকচার / Basic Structure of a Java Program</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>খুব গুরুত্বপূর্ণ:</strong> জাভাতে সবকিছু একটা <code>class</code> এর ভিতরে থাকতে হয়। public class এর নাম অবশ্যই ফাইলের নামের সাথে মিলতে হবে।</div>
+          <div class="en"><strong>Very important:</strong> Everything in Java must be inside a <code>class</code>. The public class name must match the filename.</div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span>Main.java — সবচেয়ে ছোট প্রোগ্রাম</span><button class="copy-btn">Copy</button></div>
+          <pre><code>// এটি একটি কমেন্ট — কম্পিউটার এটা পড়ে না
+
+public class Main {                          // ক্লাসের শুরু
+    public static void main(String[] args) { // প্রোগ্রাম এখান থেকে শুরু হয়
+        System.out.println("Hello World");   // স্ক্রিনে কিছু প্রিন্ট করে
+    }                                        // main মেথড শেষ
+}                                            // ক্লাস শেষ</code></pre>
+        </div>
+
+        <div class="lang-section bn">
+          <p><strong>প্রতিটি অংশের অর্থ:</strong></p>
+          <ul style="padding-left:1.5rem;">
+            <li><code>public class Main</code> → ক্লাসের নাম Main (ফাইলের নামও Main.java হতে হবে)</li>
+            <li><code>public static void main(String[] args)</code> → প্রোগ্রামের শুরুর পয়েন্ট। JVM এখান থেকে কোড চালায়।</li>
+            <li><code>System.out.println(...)</code> → স্ক্রিনে টেক্সট দেখায় এবং নতুন লাইনে যায়।</li>
+          </ul>
+        </div>
+        <div class="lang-section en">
+          <p><strong>Meaning of each part:</strong></p>
+          <ul style="padding-left:1.5rem;">
+            <li><code>public class Main</code> → Class name is Main (filename must be Main.java)</li>
+            <li><code>public static void main(String[] args)</code> → Starting point of the program. JVM starts here.</li>
+            <li><code>System.out.println(...)</code> → Prints text on screen and moves to a new line.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- How to run -->
+    <article class="program">
+      <div class="program-header"><h3>৫. কীভাবে কম্পাইল ও রান করবে / How to Compile & Run</h3></div>
+      <div class="program-body">
+        <div class="lang-section bn">
+          <ol style="padding-left:1.5rem;">
+            <li>কোড <code>Main.java</code> নামে সেভ করো।</li>
+            <li>টার্মিনাল / কমান্ড প্রম্পটে লেখো: <code>javac Main.java</code></li>
+            <li>সফল হলে <code>Main.class</code> ফাইল তৈরি হবে।</li>
+            <li>তারপর রান করো: <code>java Main</code></li>
+          </ol>
+          <p>উইন্ডোজে বাংলা না দেখালে আগে <code>chcp 65001</code> চালাও, অথবা <code>java -Dfile.encoding=UTF-8 Main</code> ব্যবহার করো।</p>
+        </div>
+        <div class="lang-section en">
+          <ol style="padding-left:1.5rem;">
+            <li>Save the code as <code>Main.java</code>.</li>
+            <li>In terminal / command prompt type: <code>javac Main.java</code></li>
+            <li>If successful, <code>Main.class</code> will be created.</li>
+            <li>Then run: <code>java Main</code></li>
+          </ol>
+          <p>If Bangla does not show on Windows, first run <code>chcp 65001</code> or use <code>java -Dfile.encoding=UTF-8 Main</code>.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Variables & Data Types -->
+    <article class="program">
+      <div class="program-header"><h3>৬. ভ্যারিয়েবল ও ডেটা টাইপ / Variables & Data Types</h3></div>
+      <div class="program-body">
+        <div class="lang-section bn">
+          <p>ভ্যারিয়েবল মানে হলো ডেটা রাখার বাক্স। জাভাতে টাইপ বলে দিতে হয়।</p>
+        </div>
+        <div class="lang-section en">
+          <p>A variable is a box that stores data. In Java you must declare the type.</p>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span>Common Data Types</span><button class="copy-btn">Copy</button></div>
+          <pre><code>int age = 20;           // পূর্ণসংখ্যা (whole number)
+double price = 99.50;   // দশমিক সংখ্যা
+float gpa = 3.85f;      // ছোট দশমিক (শেষে f লাগে)
+char grade = 'A';       // একটি অক্ষর
+boolean isPass = true;  // true অথবা false
+String name = "Mugdho"; // টেক্সট (বড় হাতের S)</code></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- Input -->
+    <article class="program">
+      <div class="program-header"><h3>৭. ইউজার ইনপুট নেওয়া / Taking User Input</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;   // Scanner ক্লাস ইমপোর্ট করতে হয়
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);  // ইনপুট নেওয়ার জন্য অবজেক্ট
+
+        System.out.print("তোমার নাম লেখো: ");
+        String name = sc.nextLine();          // পুরো লাইন পড়ে
+
+        System.out.print("তোমার বয়স লেখো: ");
+        int age = sc.nextInt();               // পূর্ণসংখ্যা পড়ে
+
+        System.out.println("হ্যালো " + name + ", তোমার বয়স " + age);
+
+        sc.close();                           // ব্যবহার শেষে বন্ধ করা ভালো
+    }
+}</code></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- Control Flow -->
+    <article class="program">
+      <div class="program-header"><h3>৮. শর্ত ও লুপ (বেসিক) / Conditions & Loops (Basic)</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>if-else & for loop</span><button class="copy-btn">Copy</button></div>
+          <pre><code>// if-else
+int marks = 75;
+if (marks >= 80) {
+    System.out.println("A+");
+} else if (marks >= 40) {
+    System.out.println("Pass");
+} else {
+    System.out.println("Fail");
+}
+
+// for loop — ১ থেকে ৫ পর্যন্ত প্রিন্ট
+for (int i = 1; i <= 5; i++) {
+    System.out.println(i);
+}
+
+// while loop
+int n = 3;
+while (n > 0) {
+    System.out.println(n);
+    n--;
+}</code></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- What next -->
+    <article class="program">
+      <div class="program-header"><h3>৯. এখন কী করবে? / What should you do next?</h3></div>
+      <div class="program-body">
+        <div class="lang-section bn">
+          <ol style="padding-left:1.5rem;">
+            <li>উপরের Hello World প্রোগ্রাম নিজে টাইপ করে রান করো।</li>
+            <li>তারপর <strong>১. Basic Programs</strong> সেকশনে যাও এবং একটা একটা করে প্র্যাকটিস করো।</li>
+            <li>প্রতিটি প্রোগ্রাম নিজে লিখে দেখো — শুধু কপি করলে শেখা হবে না।</li>
+            <li>আটকে গেলে মনে রাখার কৌশলগুলো পড়ো।</li>
+          </ol>
+          <p style="margin-top:1rem;">শুভকামনা! জাভা শেখা শুরু করো।</p>
+        </div>
+        <div class="lang-section en">
+          <ol style="padding-left:1.5rem;">
+            <li>Type and run the Hello World program yourself.</li>
+            <li>Then go to <strong>1. Basic Programs</strong> and practice one by one.</li>
+            <li>Write every program yourself — just copying will not help you learn.</li>
+            <li>If you get stuck, read the memory tips.</li>
+          </ol>
+          <p style="margin-top:1rem;">Good luck! Start learning Java.</p>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <a href="basic.html" class="btn" style="display:inline-block;padding:0.7rem 1.5rem;background:var(--primary);color:#0f172a;border-radius:8px;font-weight:600;">১. Basic Programs এ যাও →</a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><a href="index.html">← Home</a> • Beginner Tutorial • <a href="basic.html">Next: Basic Programs →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>৮. Classes | ক্লাস (স্ট্রাকচার)</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">৮. স্ট্রাকচার ও ইউনিয়ন → Java তে ক্লাস</h1>
+    <h1 class="en">8. Structure & Union → Classes in Java</h1>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৮.১</span> Student Information</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> struct নেই — class ব্যবহার করো। অবজেক্ট new দিয়ে তৈরি হয়। float লিটারেলে f দিতে হয় (3.85f)।</div>
+          <div class="en"><strong>Memory Tip:</strong> No struct — use class. Create object with new. Float literals need f (3.85f).</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>class Student {
+    String name;
+    int roll;
+    float gpa;
+    Student(String name, int roll, float gpa) {
+        this.name = name;
+        this.roll = roll;
+        this.gpa = gpa;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student("Mugdho", 101, 3.85f);
+        System.out.println("নাম: " + s1.name + ", রোল: " + s1.roll + ", GPA: " + s1.gpa);
+    }
+}</code></pre>
+        </div>
+        <div class="output">নাম: Mugdho, রোল: 101, GPA: 3.85</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৮.২</span> Employee Record</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> Employee[] e = new Employee[2]; শুধু null রেফারেন্স তৈরি করে — প্রতিটিতে new দিতে হয়।</div>
+          <div class="en"><strong>Memory Tip:</strong> new Employee[2] only creates null slots — you must new each element.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>class Employee {
+    String name;
+    int id;
+    float salary;
+    Employee(String name, int id, float salary) {
+        this.name = name;
+        this.id = id;
+        this.salary = salary;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Employee[] e = {
+            new Employee("Karim", 1, 30000),
+            new Employee("Rahim", 2, 35000)
+        };
+        for (int i = 0; i < e.length; i++)
+            System.out.println("ID: " + e[i].id + ", নাম: " + e[i].name + ", বেতন: " + e[i].salary);
+    }
+}</code></pre>
+        </div>
+        <div class="output">ID: 1, নাম: Karim, বেতন: 30000.0
+ID: 2, নাম: Rahim, বেতন: 35000.0</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৮.৩</span> Nested Structure</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> একটা ক্লাস আরেকটার ভিতরে ফিল্ড হিসেবে রাখা যায় — অ্যাক্সেস করতে . দুইবার লাগে।</div>
+          <div class="en"><strong>Memory Tip:</strong> One class can be a field of another — access with double dot (e.joiningDate.day).</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>class Date {
+    int day, month, year;
+    Date(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+}
+class Employee {
+    String name;
+    Date joiningDate;
+    Employee(String name, Date joiningDate) {
+        this.name = name;
+        this.joiningDate = joiningDate;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Employee e1 = new Employee("Karim", new Date(15, 8, 2023));
+        System.out.println("নাম: " + e1.name + ", যোগদান: " + e1.joiningDate.day + "/"
+            + e1.joiningDate.month + "/" + e1.joiningDate.year);
+    }
+}</code></pre>
+        </div>
+        <div class="output">নাম: Karim, যোগদান: 15/8/2023</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৮.৪</span> Union Example (ByteBuffer)</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> Java তে union নেই। একই মেমরি ব্লক ভিন্ন টাইপে পড়তে ByteBuffer ব্যবহার করা যায়।</div>
+          <div class="en"><strong>Memory Tip:</strong> No union in Java. Use ByteBuffer to share the same memory block with different types.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.nio.ByteBuffer;
+
+public class Main {
+    public static void main(String[] args) {
+        ByteBuffer data = ByteBuffer.allocate(20);
+        data.putInt(0, 10);
+        System.out.println("i = " + data.getInt(0));
+        data.putFloat(0, 3.14f);
+        System.out.println("f = " + data.getFloat(0));
+        System.out.println("একই মেমরিকে int হিসেবে পড়লে = " + data.getInt(0));
+        System.out.println("মেমরি ব্লকের আকার = " + data.capacity() + " bytes");
+    }
+}</code></pre>
+        </div>
+        <div class="output">i = 10
+f = 3.14
+একই মেমরিকে int হিসেবে পড়লে = 1078523331
+মেমরি ব্লকের আকার = 20 bytes</div>
+      </div>
+    </article>
+
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="references.html">← References</a> • Classes • <a href="files.html">Next: Files →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

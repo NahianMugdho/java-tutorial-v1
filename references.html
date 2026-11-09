@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>৭. References | রেফারেন্স (পয়েন্টার)</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">৭. পয়েন্টার → Java তে রেফারেন্স</h1>
+    <h1 class="en">7. Pointers → References in Java</h1>
+    <p class="bn">Java তে পয়েন্টার নেই — & , * , -> এবং pointer arithmetic কিছুই নেই। এর বদলে আছে রেফারেন্স ও index।</p>
+    <p class="en">Java has no pointers — no &, *, -> or pointer arithmetic. Instead we use references and indices.</p>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৭.১</span> Reference Basics</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> অবজেক্ট/অ্যারে ভ্যারিয়েবলে রেফারেন্স থাকে। দুইটি রেফারেন্স একই অবজেক্টকে নির্দেশ করতে পারে।</div>
+          <div class="en"><strong>Memory Tip:</strong> Object/array variables hold references. Two references can point to the same object.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int a = 10;
+        int[] box = {a};
+        int[] p = box;
+        System.out.println("a এর মান = " + a);
+        System.out.println("p[0] = " + p[0]);
+        p[0] = 99;
+        System.out.println("p দিয়ে বদলানোর পর box[0] = " + box[0]);
+        System.out.println("p == box ? " + (p == box));
+        System.out.println("a এর মান (অপরিবর্তিত) = " + a);
+    }
+}</code></pre>
+        </div>
+        <div class="output">a এর মান = 10
+p[0] = 10
+p দিয়ে বদলানোর পর box[0] = 99
+p == box ? true
+a এর মান (অপরিবর্তিত) = 10</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৭.২</span> Swap using References</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> primitive এর address পাঠানো যায় না — অ্যারে পাঠিয়ে ভিতরের মান swap করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Cannot pass address of primitives. Pass array and swap elements inside.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static void swapVals(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    public static void main(String[] args) {
+        int[] nums = {5, 10};
+        swapVals(nums, 0, 1);
+        System.out.println("a=" + nums[0] + ", b=" + nums[1]);
+    }
+}</code></pre>
+        </div>
+        <div class="output">a=10, b=5</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৭.৩</span> Array with Index</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> pointer arithmetic নেই — index ভ্যারিয়েবল দিয়ে arr[p + i] ব্যবহার করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> No pointer arithmetic — use an index variable: arr[p + i].</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40};
+        int p = 0;
+        for (int i = 0; i < arr.length; i++)
+            System.out.print(arr[p + i] + " ");
+        System.out.println();
+        for (int x : arr) System.out.print(x + " ");
+        System.out.println();
+    }
+}</code></pre>
+        </div>
+        <div class="output">10 20 30 40 
+10 20 30 40</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">৭.৪</span> String Traversal</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> '\\0' নেই — length() পর্যন্ত index দিয়ে charAt() করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> No '\\0' terminator — loop while p < str.length() and use charAt(p).</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        String str = "Hello";
+        int p = 0;
+        while (p < str.length()) {
+            System.out.print(str.charAt(p));
+            p++;
+        }
+        System.out.println();
+    }
+}</code></pre>
+        </div>
+        <div class="output">Hello</div>
+      </div>
+    </article>
+
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="functions.html">← Functions</a> • References • <a href="classes.html">Next: Classes →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

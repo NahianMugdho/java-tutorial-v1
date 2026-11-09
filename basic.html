@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>১. Basic Programs | বেসিক প্রোগ্রাম</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">১. বেসিক প্রোগ্রাম (Basic Programs)</h1>
+    <h1 class="en">1. Basic Programs</h1>
+    <p class="bn">এখানে সবচেয়ে মৌলিক প্রোগ্রামগুলো আছে। প্রতিটি প্রোগ্রামে বাংলা কমেন্ট, মনে রাখার কৌশল এবং আসল আউটপুট দেওয়া আছে।</p>
+    <p class="en">These are the most fundamental programs. Each includes Bangla comments, memory tricks, and real output.</p>
+
+    <!-- 1.1 Hello World -->
+    <article class="program" id="hello">
+      <div class="program-header"><h3><span class="num">১.১</span> Hello World</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> Java তে সবকিছু class এর ভিতরে লিখতে হয়। public class এর নাম ফাইলের নামের সাথে হুবহু মিলতে হয় (Main.java)। প্রোগ্রাম শুরু হয় <code>public static void main(String[] args)</code> থেকে। C++ এর <code>cout</code> এর বদলে <code>System.out.println()</code> ব্যবহার হয়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Everything in Java must be inside a class. The public class name must exactly match the filename (Main.java). Program starts from <code>public static void main(String[] args)</code>. Use <code>System.out.println()</code> instead of C++ <code>cout</code>.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World"); // স্ক্রিনে টেক্সট প্রিন্ট করে
+    }
+}</code></pre>
+        </div>
+        <div class="output">Hello World</div>
+      </div>
+    </article>
+
+    <!-- 1.2 Add Subtract Multiply Divide -->
+    <article class="program" id="arithmetic">
+      <div class="program-header"><h3><span class="num">১.২</span> Add, Subtract, Multiply, Divide</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> ইনপুটের জন্য <code>java.util.Scanner</code> ক্লাস লাগে — <code>Scanner sc = new Scanner(System.in);</code> তারপর <code>sc.nextInt()</code> দিয়ে সংখ্যা পড়া যায়। ভাগের আগে দ্বিতীয় সংখ্যা শূন্য কিনা চেক করা ভালো অভ্যাস।</div>
+          <div class="en"><strong>Memory Tip:</strong> Use <code>java.util.Scanner</code> for input — <code>Scanner sc = new Scanner(System.in);</code> then <code>sc.nextInt()</code>. Always check for division by zero.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("দুইটি সংখ্যা দিন: ");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println("যোগফল = " + (a + b));
+        System.out.println("বিয়োগফল = " + (a - b));
+        System.out.println("গুণফল = " + (a * b));
+        if (b != 0)
+            System.out.println("ভাগফল = " + (float) a / b);
+        else
+            System.out.println("ভাগফল সংজ্ঞায়িত নয় (b=0)");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">10 3</div>
+        <div class="output">দুইটি সংখ্যা দিন: যোগফল = 13
+বিয়োগফল = 7
+গুণফল = 30
+ভাগফল = 3.3333333</div>
+      </div>
+    </article>
+
+    <!-- 1.3 Swap -->
+    <article class="program" id="swap">
+      <div class="program-header"><h3><span class="num">১.৩</span> Swap two numbers (with/without third variable)</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> তৃতীয় ভ্যারিয়েবল ছাড়া swap করতে হলে যোগ-বিয়োগ অথবা XOR ব্যবহার করা যায়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Without a third variable, use addition-subtraction or XOR method.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int a = 5, b = 10, temp;
+
+        // ---- তৃতীয় ভ্যারিয়েবল দিয়ে ----
+        temp = a;
+        a = b;
+        b = temp;
+        System.out.println("তৃতীয় ভ্যারিয়েবল দিয়ে: a=" + a + ", b=" + b);
+
+        // ---- তৃতীয় ভ্যারিয়েবল ছাড়া (যোগ-বিয়োগ) ----
+        a = 5; b = 10;
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        System.out.println("ছাড়া (যোগ-বিয়োগ): a=" + a + ", b=" + b);
+
+        // ---- XOR পদ্ধতি ----
+        a = 5; b = 10;
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+        System.out.println("XOR পদ্ধতি: a=" + a + ", b=" + b);
+    }
+}</code></pre>
+        </div>
+        <div class="output">তৃতীয় ভ্যারিয়েবল দিয়ে: a=10, b=5
+ছাড়া (যোগ-বিয়োগ): a=10, b=5
+XOR পদ্ধতি: a=10, b=5</div>
+      </div>
+    </article>
+
+    <!-- 1.4 Even/Odd -->
+    <article class="program" id="evenodd">
+      <div class="program-header"><h3><span class="num">১.৪</span> Even / Odd</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> <code>%</code> (মডুলাস) দিয়ে ২ দিয়ে ভাগশেষ বের করো — শূন্য হলে জোড়। Java তে if এর শর্ত অবশ্যই boolean হতে হয়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Use <code>%</code> (modulo) — if remainder is 0 when divided by 2, it's even. Condition in if must be boolean.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt();
+        if (n % 2 == 0)
+            System.out.println(n + " জোড় (Even)");
+        else
+            System.out.println(n + " বিজোড় (Odd)");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">7</div>
+        <div class="output">সংখ্যা দিন: 7 বিজোড় (Odd)</div>
+      </div>
+    </article>
+
+    <!-- 1.5 Positive/Negative/Zero -->
+    <article class="program" id="sign">
+      <div class="program-header"><h3><span class="num">১.৫</span> Positive / Negative / Zero</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> তিনটি শর্ত — &gt;0, &lt;0, ==0 — if-else if-else চেইন দিয়ে চেক করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Check three conditions with if-else if-else chain.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt();
+        if (n > 0)
+            System.out.println("ধনাত্মক (Positive)");
+        else if (n < 0)
+            System.out.println("ঋণাত্মক (Negative)");
+        else
+            System.out.println("শূন্য (Zero)");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">-5</div>
+        <div class="output">সংখ্যা দিন: ঋণাত্মক (Negative)</div>
+      </div>
+    </article>
+
+    <!-- 1.6 Largest of 2/3 -->
+    <article class="program" id="largest">
+      <div class="program-header"><h3><span class="num">১.৬</span> Largest of 2/3 numbers</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> <code>a &gt;= b && a &gt;= c</code> হলে a সবচেয়ে বড়। শর্টকাট: <code>Math.max(a, Math.max(b, c))</code></div>
+          <div class="en"><strong>Memory Tip:</strong> Use <code>a &gt;= b && a &gt;= c</code>. Shortcut: <code>Math.max(a, Math.max(b, c))</code></div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("তিনটি সংখ্যা দিন: ");
+        int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
+        if (a >= b && a >= c)
+            System.out.println("সবচেয়ে বড়: " + a);
+        else if (b >= a && b >= c)
+            System.out.println("সবচেয়ে বড়: " + b);
+        else
+            System.out.println("সবচেয়ে বড়: " + c);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">12 45 7</div>
+        <div class="output">তিনটি সংখ্যা দিন: সবচেয়ে বড়: 45</div>
+      </div>
+    </article>
+
+    <!-- 1.7 Leap Year -->
+    <article class="program" id="leap">
+      <div class="program-header"><h3><span class="num">১.৭</span> Leap Year</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> নিয়ম — (৪ দিয়ে বিভাজ্য এবং ১০০ দিয়ে বিভাজ্য নয়) অথবা (৪০০ দিয়ে বিভাজ্য)।</div>
+          <div class="en"><strong>Memory Tip:</strong> Rule: (divisible by 4 and not by 100) OR (divisible by 400).</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সাল দিন: ");
+        int y = sc.nextInt();
+        if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
+            System.out.println(y + " অধিবর্ষ (Leap Year)");
+        else
+            System.out.println(y + " অধিবর্ষ নয়");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">2024</div>
+        <div class="output">সাল দিন: 2024 অধিবর্ষ (Leap Year)</div>
+      </div>
+    </article>
+
+    <!-- 1.8 Vowel/Consonant -->
+    <article class="program" id="vowel">
+      <div class="program-header"><h3><span class="num">১.৮</span> Vowel / Consonant</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> a,e,i,o,u (ছোট/বড়) — এই ৫টা অক্ষর হলে vowel। Java তে char পড়তে <code>sc.next().charAt(0)</code> ব্যবহার করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> a,e,i,o,u (both cases) are vowels. Read char with <code>sc.next().charAt(0)</code>.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("একটি অক্ষর দিন: ");
+        char ch = sc.next().charAt(0);
+        if (ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||
+            ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')
+            System.out.println("স্বরবর্ণ (Vowel)");
+        else
+            System.out.println("ব্যঞ্জনবর্ণ (Consonant)");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">e</div>
+        <div class="output">একটি অক্ষর দিন: স্বরবর্ণ (Vowel)</div>
+      </div>
+    </article>
+
+    <!-- 1.9 Grade -->
+    <article class="program" id="grade">
+      <div class="program-header"><h3><span class="num">১.৯</span> Grade Calculation</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> নাম্বার অনুযায়ী রেঞ্জ ধরে if-else if চেইন, সবচেয়ে বড় শর্ত আগে চেক করা ভালো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Use if-else if chain based on mark ranges. Check highest range first.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("নম্বর দিন: ");
+        int marks = sc.nextInt();
+        if (marks >= 80) System.out.println("গ্রেড: A+");
+        else if (marks >= 70) System.out.println("গ্রেড: A");
+        else if (marks >= 60) System.out.println("গ্রেড: A-");
+        else if (marks >= 50) System.out.println("গ্রেড: B");
+        else if (marks >= 40) System.out.println("গ্রেড: C");
+        else if (marks >= 33) System.out.println("গ্রেড: D");
+        else System.out.println("গ্রেড: F (ফেল)");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">75</div>
+        <div class="output">নম্বর দিন: গ্রেড: A</div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Java Learning Site • Basic Programs • <a href="loops.html">Next: Loops →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

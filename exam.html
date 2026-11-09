@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>১২. Exam Programs | পরীক্ষার প্রোগ্রাম</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">১২. পরীক্ষায় প্রায়ই আসা প্রোগ্রাম</h1>
+    <h1 class="en">12. Frequently Asked Exam Programs</h1>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.১</span> Decimal to Binary</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> বারবার ২ দিয়ে ভাগ, ভাগশেষ উল্টো ক্রমে বসাও। বিল্ট-ইন: Integer.toBinaryString()</div>
+          <div class="en"><strong>Memory Tip:</strong> Repeatedly divide by 2, store remainders in reverse. Built-in: Integer.toBinaryString()</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("দশমিক সংখ্যা দিন: ");
+        int n = sc.nextInt();
+        int original = n;
+        int[] binary = new int[32];
+        int i = 0;
+        if (n == 0) { System.out.println(0); return; }
+        while (n > 0) {
+            binary[i++] = n % 2;
+            n /= 2;
+        }
+        System.out.print("বাইনারি = ");
+        for (int j = i - 1; j >= 0; j--) System.out.print(binary[j]);
+        System.out.println();
+        System.out.println("বিল্ট-ইন = " + Integer.toBinaryString(original));
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">22</div>
+        <div class="output">দশমিক সংখ্যা দিন: বাইনারি = 10110
+বিল্ট-ইন = 10110</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.২</span> Binary to Decimal</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> প্রতিটি অংক × ২^position যোগ করো। বিল্ট-ইন: Integer.parseInt(s, 2)</div>
+          <div class="en"><strong>Memory Tip:</strong> Sum digit × 2^position. Built-in: Integer.parseInt(s, 2)</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("বাইনারি সংখ্যা দিন: ");
+        long binary = sc.nextLong();
+        String original = Long.toString(binary);
+        int decimalVal = 0, i = 0, rem;
+        while (binary != 0) {
+            rem = (int) (binary % 10);
+            decimalVal += rem * (int) Math.pow(2, i);
+            binary /= 10;
+            i++;
+        }
+        System.out.println("দশমিক = " + decimalVal);
+        System.out.println("বিল্ট-ইন = " + Integer.parseInt(original, 2));
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">10110</div>
+        <div class="output">বাইনারি সংখ্যা দিন: দশমিক = 22
+বিল্ট-ইন = 22</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.৩</span> Decimal to Octal/Hex</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt();
+        System.out.println("অক্টাল = " + Integer.toOctalString(n));
+        System.out.println("হেক্স = " + Integer.toHexString(n));
+        int num = n, i = 0;
+        int[] hexArr = new int[32];
+        String hexDigits = "0123456789ABCDEF";
+        if (num == 0) hexArr[i++] = 0;
+        while (num > 0) {
+            hexArr[i++] = num % 16;
+            num /= 16;
+        }
+        System.out.print("ম্যানুয়াল হেক্স = ");
+        for (int j = i - 1; j >= 0; j--) System.out.print(hexDigits.charAt(hexArr[j]));
+        System.out.println();
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">255</div>
+        <div class="output">সংখ্যা দিন: অক্টাল = 377
+হেক্স = ff
+ম্যানুয়াল হেক্স = FF</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.৪</span> Power using Recursion</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    static long power(int base, int exp) {
+        if (exp == 0) return 1;
+        return base * power(base, exp - 1);
+    }
+    public static void main(String[] args) {
+        System.out.println("2^10 = " + power(2, 10));
+    }
+}</code></pre>
+        </div>
+        <div class="output">2^10 = 1024</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.৫</span> Check Anagram</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> দুইটা স্ট্রিং sort করে Arrays.equals() দিয়ে তুলনা করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Sort both strings and compare with Arrays.equals().</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Arrays;
+public class Main {
+    public static void main(String[] args) {
+        String s1 = "listen", s2 = "silent";
+        char[] a = s1.toCharArray();
+        char[] b = s2.toCharArray();
+        Arrays.sort(a);
+        Arrays.sort(b);
+        if (Arrays.equals(a, b))
+            System.out.println("অ্যানাগ্রাম (Anagram)");
+        else
+            System.out.println("অ্যানাগ্রাম নয়");
+    }
+}</code></pre>
+        </div>
+        <div class="output">অ্যানাগ্রাম (Anagram)</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.৬</span> Remove Duplicate from Array</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 2, 3, 4, 4, 5};
+        int n = arr.length;
+        int[] result = new int[n];
+        int k = 0;
+        for (int i = 0; i < n; i++) {
+            if (i == 0 || arr[i] != arr[i - 1])
+                result[k++] = arr[i];
+        }
+        System.out.print("ডুপ্লিকেট বাদে: ");
+        for (int i = 0; i < k; i++) System.out.print(result[i] + " ");
+        System.out.println();
+    }
+}</code></pre>
+        </div>
+        <div class="output">ডুপ্লিকেট বাদে: 1 2 3 4 5</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.৭</span> Merge & Sort Arrays</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Arrays;
+public class Main {
+    public static void main(String[] args) {
+        int[] a = {5, 1, 4}, b = {2, 6, 3};
+        int[] merged = new int[a.length + b.length];
+        int k = 0;
+        for (int i = 0; i < a.length; i++) merged[k++] = a[i];
+        for (int i = 0; i < b.length; i++) merged[k++] = b[i];
+        Arrays.sort(merged);
+        for (int i = 0; i < k; i++) System.out.print(merged[i] + " ");
+        System.out.println();
+    }
+}</code></pre>
+        </div>
+        <div class="output">1 2 3 4 5 6</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.৮</span> Frequency of Array Elements</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>public class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 2, 3, 1, 4, 2};
+        int n = arr.length;
+        boolean[] visited = new boolean[n];
+        for (int i = 0; i < n; i++) {
+            if (visited[i]) continue;
+            int count = 1;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] == arr[j]) { count++; visited[j] = true; }
+            }
+            System.out.println(arr[i] + " এর ফ্রিকোয়েন্সি = " + count);
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="output">1 এর ফ্রিকোয়েন্সি = 2
+2 এর ফ্রিকোয়েন্সি = 3
+3 এর ফ্রিকোয়েন্সি = 1
+4 এর ফ্রিকোয়েন্সি = 1</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.৯</span> Menu-driven Calculator</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        float a, b;
+        do {
+            System.out.print("\n১.যোগ ২.বিয়োগ ৩.গুণ ৪.ভাগ ৫.প্রস্থান\nপছন্দ দিন: ");
+            choice = sc.nextInt();
+            if (choice == 5) break;
+            System.out.print("দুইটি সংখ্যা দিন: ");
+            a = sc.nextFloat();
+            b = sc.nextFloat();
+            switch (choice) {
+                case 1: System.out.println("যোগফল = " + (a + b)); break;
+                case 2: System.out.println("বিয়োগফল = " + (a - b)); break;
+                case 3: System.out.println("গুণফল = " + (a * b)); break;
+                case 4:
+                    if (b != 0) System.out.println("ভাগফল = " + (a / b));
+                    else System.out.println("শূন্য দিয়ে ভাগ করা যায় না");
+                    break;
+                default: System.out.println("ভুল অপশন");
+            }
+        } while (choice != 5);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">1 → 10 3 → 5</div>
+        <div class="output">যোগফল = 13.0</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.১০</span> Simple Banking System</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        float balance = 1000;
+        int choice;
+        float amount;
+        do {
+            System.out.print("\n১.জমা ২.উত্তোলন ৩.ব্যালেন্স দেখুন ৪.প্রস্থান\nপছন্দ: ");
+            choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.print("জমার পরিমাণ: ");
+                    amount = sc.nextFloat();
+                    balance += amount;
+                    System.out.println("নতুন ব্যালেন্স = " + balance);
+                    break;
+                case 2:
+                    System.out.print("উত্তোলনের পরিমাণ: ");
+                    amount = sc.nextFloat();
+                    if (amount > balance) System.out.println("অপর্যাপ্ত ব্যালেন্স!");
+                    else { balance -= amount; System.out.println("নতুন ব্যালেন্স = " + balance); }
+                    break;
+                case 3:
+                    System.out.println("বর্তমান ব্যালেন্স = " + balance);
+                    break;
+            }
+        } while (choice != 4);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">1 → 500 → 3 → 4</div>
+        <div class="output">নতুন ব্যালেন্স = 1500.0
+বর্তমান ব্যালেন্স = 1500.0</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.১১</span> Student Result Management</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+class Student {
+    String name;
+    int[] marks = new int[3];
+    double average;
+    char grade;
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Student s = new Student();
+        System.out.print("নাম দিন: ");
+        s.name = sc.next();
+        int total = 0;
+        for (int i = 0; i < 3; i++) {
+            System.out.print("বিষয় " + (i + 1) + " এর নম্বর: ");
+            s.marks[i] = sc.nextInt();
+            total += s.marks[i];
+        }
+        s.average = total / 3.0;
+        if (s.average >= 80) s.grade = 'A';
+        else if (s.average >= 60) s.grade = 'B';
+        else if (s.average >= 40) s.grade = 'C';
+        else s.grade = 'F';
+        System.out.printf("%nনাম: %s, গড়: %.2f, গ্রেড: %c%n", s.name, s.average, s.grade);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">Mugdho → 80 75 90</div>
+        <div class="output">নাম: Mugdho, গড়: 81.67, গ্রেড: A</div>
+      </div>
+    </article>
+
+    <article class="program">
+      <div class="program-header"><h3><span class="num">১২.১২</span> Library Management (Mini Project)</h3></div>
+      <div class="program-body">
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+class Book {
+    int id;
+    String title;
+    boolean isIssued;
+    Book(int id, String title) {
+        this.id = id;
+        this.title = title;
+        this.isIssued = false;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Book[] books = new Book[10];
+        int count = 0, choice;
+        do {
+            System.out.print("\n১.বই যোগ ২.বই দেখুন ৩.বই ইস্যু ৪.প্রস্থান\nপছন্দ: ");
+            choice = sc.nextInt();
+            switch (choice) {
+                case 1: {
+                    System.out.print("বই আইডি ও নাম দিন: ");
+                    int id = sc.nextInt();
+                    String title = sc.next();
+                    books[count++] = new Book(id, title);
+                    break;
+                }
+                case 2:
+                    for (int i = 0; i < count; i++)
+                        System.out.println("ID:" + books[i].id + ", নাম:" + books[i].title
+                            + ", স্ট্যাটাস: " + (books[i].isIssued ? "ইস্যুকৃত" : "উপলব্ধ"));
+                    break;
+                case 3: {
+                    System.out.print("ইস্যু করার বই এর আইডি দিন: ");
+                    int id = sc.nextInt();
+                    for (int i = 0; i < count; i++)
+                        if (books[i].id == id) {
+                            books[i].isIssued = true;
+                            System.out.println("ইস্যু সম্পন্ন");
+                        }
+                    break;
+                }
+            }
+        } while (choice != 4);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">1 → 101 CProgramming → 2 → 4</div>
+        <div class="output">ID:101, নাম:CProgramming, স্ট্যাটাস: উপলব্ধ</div>
+      </div>
+    </article>
+
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="ds.html">← Data Structures</a> • Exam Programs • <a href="conversion.html">Next: Conversion Sheet →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

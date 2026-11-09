@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>২. Loop Programs | লুপ প্রোগ্রাম</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">২. লুপ প্রোগ্রাম (Loop Programs)</h1>
+    <h1 class="en">2. Loop Programs</h1>
+
+    <!-- 2.1 Sum of N -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.১</span> Sum of N numbers</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> for লুপে <code>sum += i</code> — ১ থেকে n পর্যন্ত যোগ করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> In a for loop use <code>sum += i</code> from 1 to n.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("n দিন: ");
+        int n = sc.nextInt(), sum = 0;
+        for (int i = 1; i <= n; i++)
+            sum += i;
+        System.out.println("যোগফল = " + sum);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">5</div>
+        <div class="output">n দিন: যোগফল = 15</div>
+      </div>
+    </article>
+
+    <!-- 2.2 Factorial -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.২</span> Factorial</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> <code>fact *= i</code>, শুরুর মান ১। বড় ফ্যাক্টরিয়ালের জন্য <code>long</code> ব্যবহার করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Use <code>fact *= i</code>, start with 1. Use <code>long</code> for larger factorials.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("n দিন: ");
+        int n = sc.nextInt();
+        long fact = 1;
+        for (int i = 1; i <= n; i++)
+            fact *= i;
+        System.out.println(n + "! = " + fact);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">5</div>
+        <div class="output">n দিন: 5! = 120</div>
+      </div>
+    </article>
+
+    <!-- 2.3 Fibonacci -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.৩</span> Fibonacci Series</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> প্রথম দুইটা 0,1 — পরেরটা আগের দুইটার যোগফল।</div>
+          <div class="en"><strong>Memory Tip:</strong> Start with 0,1 — each next term is sum of previous two.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("কতগুলো পদ চান: ");
+        int n = sc.nextInt(), a = 0, b = 1, next;
+        for (int i = 0; i < n; i++) {
+            System.out.print(a + " ");
+            next = a + b;
+            a = b;
+            b = next;
+        }
+        System.out.println();
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">8</div>
+        <div class="output">কতগুলো পদ চান: 0 1 1 2 3 5 8 13</div>
+      </div>
+    </article>
+
+    <!-- 2.4 Prime -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.৪</span> Prime Number</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> 2 থেকে sqrt(n) পর্যন্ত কোনো সংখ্যা দিয়ে ভাগ গেলে prime না। <code>Math.sqrt()</code> সরাসরি পাওয়া যায়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Check divisibility from 2 to sqrt(n). Use <code>Math.sqrt()</code>.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt();
+        boolean isPrime = true;
+        if (n <= 1) isPrime = false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) { isPrime = false; break; }
+        }
+        System.out.println(n + " " + (isPrime ? "মৌলিক সংখ্যা (Prime)" : "মৌলিক সংখ্যা নয়"));
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">29</div>
+        <div class="output">সংখ্যা দিন: 29 মৌলিক সংখ্যা (Prime)</div>
+      </div>
+    </article>
+
+    <!-- 2.5 Prime in range -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.৫</span> Prime numbers in a range</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> প্রতিটি সংখ্যার জন্য prime-চেক মেথড বারবার কল করো। মেথডটি static হতে হয়।</div>
+          <div class="en"><strong>Memory Tip:</strong> Call a static isPrime method for each number in the range.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    static boolean isPrime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i * i <= n; i++)
+            if (n % i == 0) return false;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("শুরু ও শেষ দিন: ");
+        int low = sc.nextInt(), high = sc.nextInt();
+        System.out.print("মৌলিক সংখ্যাসমূহ: ");
+        for (int i = low; i <= high; i++)
+            if (isPrime(i)) System.out.print(i + " ");
+        System.out.println();
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">10 30</div>
+        <div class="output">শুরু ও শেষ দিন: মৌলিক সংখ্যাসমূহ: 11 13 17 19 23 29</div>
+      </div>
+    </article>
+
+    <!-- 2.6 Perfect Number -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.৬</span> Perfect Number</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> যে সংখ্যা তার প্রকৃত ভাজকগুলোর (নিজেকে বাদে) যোগফলের সমান (যেমন 6 = 1+2+3)।</div>
+          <div class="en"><strong>Memory Tip:</strong> A number equal to the sum of its proper divisors (excluding itself), e.g. 6 = 1+2+3.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt(), sum = 0;
+        for (int i = 1; i < n; i++)
+            if (n % i == 0) sum += i;
+        if (sum == n)
+            System.out.println(n + " একটি পারফেক্ট নাম্বার");
+        else
+            System.out.println(n + " পারফেক্ট নাম্বার নয়");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">28</div>
+        <div class="output">সংখ্যা দিন: 28 একটি পারফেক্ট নাম্বার</div>
+      </div>
+    </article>
+
+    <!-- 2.7 Armstrong -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.৭</span> Armstrong Number</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> প্রতিটি অংককে অংকসংখ্যার পাওয়ারে তুলে যোগ করো। <code>Math.pow()</code> double দেয় বলে (int) cast করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Raise each digit to the power of digit count and sum. Cast <code>Math.pow()</code> result to int.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt();
+        int original = n, remainder, digits = 0;
+        double result = 0;
+        for (int temp = n; temp != 0; temp /= 10) digits++;
+        for (int temp = n; temp != 0; temp /= 10) {
+            remainder = temp % 10;
+            result += Math.pow(remainder, digits);
+        }
+        if ((int) result == original)
+            System.out.println(original + " আর্মস্ট্রং সংখ্যা");
+        else
+            System.out.println(original + " আর্মস্ট্রং সংখ্যা নয়");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">153</div>
+        <div class="output">সংখ্যা দিন: 153 আর্মস্ট্রং সংখ্যা</div>
+      </div>
+    </article>
+
+    <!-- 2.8 Palindrome Number -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.৮</span> Palindrome Number</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> সংখ্যাটি উল্টিয়ে মূল সংখ্যার সাথে মিলিয়ে দেখো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Reverse the number and compare with the original.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt();
+        int original = n, reversed = 0, remainder;
+        while (n != 0) {
+            remainder = n % 10;
+            reversed = reversed * 10 + remainder;
+            n /= 10;
+        }
+        if (original == reversed)
+            System.out.println(original + " প্যালিনড্রোম");
+        else
+            System.out.println(original + " প্যালিনড্রোম নয়");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">121</div>
+        <div class="output">সংখ্যা দিন: 121 প্যালিনড্রোম</div>
+      </div>
+    </article>
+
+    <!-- 2.9 Reverse Number -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.৯</span> Reverse Number</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> while লুপে শেষ অংক বের করে (<code>n%10</code>) নতুন সংখ্যায় বসাও, তারপর <code>n/=10</code>।</div>
+          <div class="en"><strong>Memory Tip:</strong> Extract last digit with <code>n%10</code>, build reversed number, then <code>n/=10</code>.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt(), reversed = 0;
+        while (n != 0) {
+            reversed = reversed * 10 + n % 10;
+            n /= 10;
+        }
+        System.out.println("উল্টানো সংখ্যা = " + reversed);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">12345</div>
+        <div class="output">সংখ্যা দিন: উল্টানো সংখ্যা = 54321</div>
+      </div>
+    </article>
+
+    <!-- 2.10 Sum of Digits -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.১০</span> Sum of Digits</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> প্রতিবার <code>n%10</code> যোগ করো এবং <code>n/=10</code> করে ছোট করো।</div>
+          <div class="en"><strong>Memory Tip:</strong> Add <code>n%10</code> each time and shrink n with <code>n/=10</code>.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt(), sum = 0;
+        while (n != 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        System.out.println("অংকের যোগফল = " + sum);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">12345</div>
+        <div class="output">সংখ্যা দিন: অংকের যোগফল = 15</div>
+      </div>
+    </article>
+
+    <!-- 2.11 Count Digits -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.১১</span> Count Digits</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> প্রতিবার <code>n/=10</code> করে একটা কাউন্টার বাড়াও।</div>
+          <div class="en"><strong>Memory Tip:</strong> Increment a counter each time you do <code>n/=10</code>.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("সংখ্যা দিন: ");
+        int n = sc.nextInt(), count = 0;
+        while (n != 0) {
+            n /= 10;
+            count++;
+        }
+        System.out.println("অংকের সংখ্যা = " + count);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">12345</div>
+        <div class="output">সংখ্যা দিন: অংকের সংখ্যা = 5</div>
+      </div>
+    </article>
+
+    <!-- 2.12 GCD LCM -->
+    <article class="program">
+      <div class="program-header"><h3><span class="num">২.১২</span> GCD & LCM</h3></div>
+      <div class="program-body">
+        <div class="tip">
+          <div class="bn"><strong>মনে রাখার কৌশল:</strong> ইউক্লিডের অ্যালগরিদম — <code>while(y != 0)</code>। LCM = (a*b)/GCD। Java তে শর্ত অবশ্যই boolean।</div>
+          <div class="en"><strong>Memory Tip:</strong> Euclidean algorithm — <code>while(y != 0)</code>. LCM = (a*b)/GCD. Condition must be boolean.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span>Main.java</span><button class="copy-btn">Copy</button></div>
+          <pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("দুইটি সংখ্যা দিন: ");
+        int a = sc.nextInt(), b = sc.nextInt();
+        int x = a, y = b, temp;
+        while (y != 0) {
+            temp = y;
+            y = x % y;
+            x = temp;
+        }
+        int gcdVal = x;
+        int lcmVal = (a * b) / gcdVal;
+        System.out.println("GCD = " + gcdVal);
+        System.out.println("LCM = " + lcmVal);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+        <div class="input-sample">48 18</div>
+        <div class="output">দুইটি সংখ্যা দিন: GCD = 6
+LCM = 144</div>
+      </div>
+    </article>
+
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="basic.html">← Basic</a> • Loop Programs • <a href="patterns.html">Next: Patterns →</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Coding Notes | জাভা কোডিং নোটস</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="active">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <h1 class="bn">Java প্রোগ্রামিং — এক্সাম নোট</h1>
+      <h1 class="en">Java Programming — Exam Notes</h1>
+      <p class="bn">সব বেসিক থেকে ডেটা স্ট্রাকচার পর্যন্ত — প্রতিটি প্রোগ্রামের real আউটপুট, বাংলা কমেন্ট ও মনে রাখার কৌশল সহ।</p>
+      <p class="en">From basics to data structures — every program with real output, Bangla comments, and memory tricks.</p>
+    </section>
+
+    <!-- Beginner Tutorial Highlight -->
+    <div class="card" style="margin-bottom:2rem; border:2px solid var(--primary); background:linear-gradient(135deg, rgba(56,189,248,0.12), rgba(167,139,250,0.12));">
+      <div class="icon">🚀</div>
+      <h3 class="bn">একদম নতুন? এখান থেকে শুরু করো</h3>
+      <h3 class="en">Complete Beginner? Start Here</h3>
+      <p class="bn">জাভা কী, কেন শিখবে, কোন কাজে ব্যবহার হয়, প্রোগ্রামের স্ট্রাকচার, সিনট্যাক্স, ভ্যারিয়েবল, ইনপুট-আউটপুট — সবকিছু সহজ ভাষায় ব্যাখ্যা করা আছে।</p>
+      <p class="en">What is Java, why learn it, where it is used, program structure, syntax, variables, input-output — everything explained in simple language.</p>
+      <a href="tutorial.html" class="btn">টিউটোরিয়াল পড়ো / Read Tutorial →</a>
+    </div>
+
+    <div class="howto">
+      <h3 class="bn">কীভাবে কম্পাইল ও রান করবে</h3>
+      <h3 class="en">How to Compile & Run</h3>
+      <ol>
+        <li class="bn">প্রতিটি প্রোগ্রাম <code>Main.java</code> নামে সেভ করো — ক্লাসের নাম <code>Main</code> হতে হবে।</li>
+        <li class="en">Save every program as <code>Main.java</code> — the class name must be <code>Main</code>.</li>
+        <li class="bn">কম্পাইল: <code>javac Main.java</code> (সফল হলে <code>Main.class</code> তৈরি হয়)</li>
+        <li class="en">Compile: <code>javac Main.java</code> (creates <code>Main.class</code> on success)</li>
+        <li class="bn">রান: <code>java Main</code></li>
+        <li class="en">Run: <code>java Main</code></li>
+        <li class="bn">উইন্ডোজে বাংলা না দেখালে: <code>java -Dfile.encoding=UTF-8 Main</code> অথবা আগে <code>chcp 65001</code></li>
+        <li class="en">If Bangla doesn't show on Windows: use <code>java -Dfile.encoding=UTF-8 Main</code> or run <code>chcp 65001</code> first.</li>
+      </ol>
+    </div>
+
+    <h2 class="bn">সূচিপত্র / Chapters</h2>
+    <h2 class="en">Table of Contents</h2>
+
+    <div class="cards">
+      <div class="card" style="border-color: var(--primary);">
+        <div class="icon">0️⃣</div>
+        <h3 class="bn">বিগিনার টিউটোরিয়াল</h3>
+        <h3 class="en">Beginner Tutorial</h3>
+        <p class="bn">জাভা কী, কেন শিখবে, স্ট্রাকচার, সিনট্যাক্স, ভ্যারিয়েবল ও ইনপুট-আউটপুট।</p>
+        <p class="en">What is Java, why learn it, structure, syntax, variables & input-output.</p>
+        <a href="tutorial.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">1️⃣</div>
+        <h3 class="bn">বেসিক প্রোগ্রাম</h3>
+        <h3 class="en">Basic Programs</h3>
+        <p class="bn">Hello World, Swap, Even/Odd, Leap Year, Grade ইত্যাদি।</p>
+        <p class="en">Hello World, Swap, Even/Odd, Leap Year, Grade calculation etc.</p>
+        <a href="basic.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">2️⃣</div>
+        <h3 class="bn">লুপ প্রোগ্রাম</h3>
+        <h3 class="en">Loop Programs</h3>
+        <p class="bn">Factorial, Fibonacci, Prime, Armstrong, GCD/LCM ইত্যাদি।</p>
+        <p class="en">Factorial, Fibonacci, Prime, Armstrong, GCD/LCM etc.</p>
+        <a href="loops.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">3️⃣</div>
+        <h3 class="bn">প্যাটার্ন প্রোগ্রাম</h3>
+        <h3 class="en">Pattern Programs</h3>
+        <p class="bn">Triangle, Pyramid, Floyd's, Pascal's Triangle ইত্যাদি।</p>
+        <p class="en">Triangle, Pyramid, Floyd's, Pascal's Triangle etc.</p>
+        <a href="patterns.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">4️⃣</div>
+        <h3 class="bn">অ্যারে প্রোগ্রাম</h3>
+        <h3 class="en">Array Programs</h3>
+        <p class="bn">Sorting, Searching, Matrix operations ইত্যাদি।</p>
+        <p class="en">Sorting, Searching, Matrix operations etc.</p>
+        <a href="arrays.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">5️⃣</div>
+        <h3 class="bn">স্ট্রিং প্রোগ্রাম</h3>
+        <h3 class="en">String Programs</h3>
+        <p class="bn">Length, Reverse, Palindrome, Frequency ইত্যাদি।</p>
+        <p class="en">Length, Reverse, Palindrome, Frequency etc.</p>
+        <a href="strings.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">6️⃣</div>
+        <h3 class="bn">ফাংশন / মেথড</h3>
+        <h3 class="en">Functions / Methods</h3>
+        <p class="bn">Recursive Factorial, Fibonacci, GCD, Call by Value।</p>
+        <p class="en">Recursive Factorial, Fibonacci, GCD, Call by Value.</p>
+        <a href="functions.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">7️⃣</div>
+        <h3 class="bn">রেফারেন্স (পয়েন্টার)</h3>
+        <h3 class="en">References (Pointers)</h3>
+        <p class="bn">Java তে পয়েন্টার নেই — রেফারেন্স দিয়ে কীভাবে করা হয়।</p>
+        <p class="en">No pointers in Java — how to achieve the same with references.</p>
+        <a href="references.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">8️⃣</div>
+        <h3 class="bn">ক্লাস (স্ট্রাকচার)</h3>
+        <h3 class="en">Classes (Structures)</h3>
+        <p class="bn">Student, Employee, Nested class, ByteBuffer।</p>
+        <p class="en">Student, Employee, Nested class, ByteBuffer.</p>
+        <a href="classes.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">9️⃣</div>
+        <h3 class="bn">ফাইল হ্যান্ডলিং</h3>
+        <h3 class="en">File Handling</h3>
+        <p class="bn">Write, Read, Append, Copy File।</p>
+        <p class="en">Write, Read, Append, Copy File.</p>
+        <a href="files.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">🔟</div>
+        <h3 class="bn">ডাইনামিক মেমরি</h3>
+        <h3 class="en">Dynamic Memory</h3>
+        <p class="bn">new, ArrayList, Garbage Collection।</p>
+        <p class="en">new, ArrayList, Garbage Collection.</p>
+        <a href="memory.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">1️⃣1️⃣</div>
+        <h3 class="bn">ডেটা স্ট্রাকচার</h3>
+        <h3 class="en">Data Structures</h3>
+        <p class="bn">Stack, Queue, Linked List, BST, BFS, DFS।</p>
+        <p class="en">Stack, Queue, Linked List, BST, BFS, DFS.</p>
+        <a href="ds.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">1️⃣2️⃣</div>
+        <h3 class="bn">পরীক্ষার গুরুত্বপূর্ণ প্রোগ্রাম</h3>
+        <h3 class="en">Frequently Asked Exam Programs</h3>
+        <p class="bn">Number conversion, Anagram, Banking, Library Management।</p>
+        <p class="en">Number conversion, Anagram, Banking, Library Management.</p>
+        <a href="exam.html" class="btn">Start →</a>
+      </div>
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3 class="bn">C / C++ → Java কনভার্সন</h3>
+        <h3 class="en">C / C++ → Java Conversion Sheet</h3>
+        <p class="bn">সিনট্যাক্স তুলনা টেবিল — দ্রুত রিভিশনের জন্য।</p>
+        <p class="en">Side-by-side syntax comparison tables for quick revision.</p>
+        <a href="conversion.html" class="btn">View →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="bn">Java Coding Exam Notes • বাংলা + English • সকল প্রোগ্রামের real output সহ</p>
+      <p class="en">Java Coding Exam Notes • Bangla + English • With real outputs for every program</p>
+      <p style="margin-top:0.5rem;opacity:0.7">Made for students • Practice every program yourself</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

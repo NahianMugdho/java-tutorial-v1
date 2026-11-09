@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C / C++ → Java Conversion Sheet</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="lang-both">
+  <header>
+    <div class="container header-inner">
+      <div class="logo">☕ Java <span>Learning</span></div>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="bn">বাংলা</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn active" data-lang="both">Both</button>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a>
+      <a href="basic.html">১. Basic</a>
+      <a href="loops.html">২. Loops</a>
+      <a href="patterns.html">৩. Patterns</a>
+      <a href="arrays.html">৪. Arrays</a>
+      <a href="strings.html">৫. Strings</a>
+      <a href="functions.html">৬. Functions</a>
+      <a href="references.html">৭. References</a>
+      <a href="classes.html">৮. Classes</a>
+      <a href="files.html">৯. Files</a>
+      <a href="memory.html">১০. Memory</a>
+      <a href="ds.html">১১. Data Structures</a>
+      <a href="exam.html">১২. Exam Programs</a>
+      <a href="conversion.html">Conversion Sheet</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 class="bn">C, C++ ও Java এর মধ্যে কনভার্সন শিট</h1>
+    <h1 class="en">C, C++ & Java Conversion Sheet</h1>
+    <p class="bn">পরীক্ষার আগে দ্রুত রিভিশনের জন্য পাশাপাশি সিনট্যাক্স তুলনা।</p>
+    <p class="en">Side-by-side syntax comparison for quick exam revision.</p>
+
+    <h2>প্রোগ্রামের কাঠামো ও কম্পাইল / Program Structure & Compile</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C</th><th>C++</th><th>Java</th></tr>
+        <tr><td>Header / Import</td><td>#include &lt;stdio.h&gt;</td><td>#include &lt;iostream&gt;</td><td>import java.util.Scanner;</td></tr>
+        <tr><td>Entry Point</td><td>int main() { return 0; }</td><td>int main() { return 0; }</td><td>public static void main(String[] args)</td></tr>
+        <tr><td>Code Location</td><td>Anywhere</td><td>Anywhere</td><td>Inside a class</td></tr>
+        <tr><td>Compile & Run</td><td>gcc file.c → ./file</td><td>g++ file.cpp → ./file</td><td>javac Main.java → java Main</td></tr>
+        <tr><td>Platform</td><td>Native</td><td>Native</td><td>Bytecode (Write once, run anywhere)</td></tr>
+      </table>
+    </div>
+
+    <h2>ইনপুট / আউটপুট / Input / Output</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C</th><th>C++</th><th>Java</th></tr>
+        <tr><td>Print with newline</td><td>printf("%d\n", n);</td><td>cout << n << endl;</td><td>System.out.println(n);</td></tr>
+        <tr><td>Print without newline</td><td>printf("%d ", n);</td><td>cout << n << " ";</td><td>System.out.print(n + " ");</td></tr>
+        <tr><td>Formatted</td><td>printf("%.2f", x);</td><td>cout << fixed << setprecision(2);</td><td>System.out.printf("%.2f%n", x);</td></tr>
+        <tr><td>Integer input</td><td>scanf("%d", &n);</td><td>cin >> n;</td><td>sc.nextInt();</td></tr>
+        <tr><td>Char input</td><td>scanf(" %c", &ch);</td><td>cin >> ch;</td><td>sc.next().charAt(0);</td></tr>
+        <tr><td>String input</td><td>scanf("%s", s);</td><td>cin >> s;</td><td>sc.next();</td></tr>
+        <tr><td>Full line</td><td>fgets(buf, size, stdin);</td><td>getline(cin, line);</td><td>sc.nextLine();</td></tr>
+      </table>
+    </div>
+
+    <h2>ডেটা টাইপ / Data Types</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C</th><th>C++</th><th>Java</th></tr>
+        <tr><td>Integer</td><td>int, long long</td><td>int, long long</td><td>int (32-bit), long (64-bit)</td></tr>
+        <tr><td>Decimal</td><td>float, double</td><td>float, double</td><td>float (need f), double</td></tr>
+        <tr><td>Boolean</td><td>int 0/1</td><td>bool</td><td>boolean</td></tr>
+        <tr><td>Char</td><td>1 byte ASCII</td><td>1 byte</td><td>2 byte Unicode</td></tr>
+        <tr><td>Constant</td><td>#define / const</td><td>const int</td><td>static final int</td></tr>
+        <tr><td>Array size</td><td>sizeof(arr)/sizeof(arr[0])</td><td>same</td><td>arr.length</td></tr>
+      </table>
+    </div>
+
+    <h2>কন্ট্রোল স্টেটমেন্ট / Control Statements</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C / C++</th><th>Java</th></tr>
+        <tr><td>if / while condition</td><td>0 = false, non-zero = true</td><td>Must be boolean</td></tr>
+        <tr><td>for-each</td><td>C++: for (char c : str)</td><td>for (char c : str.toCharArray())</td></tr>
+        <tr><td>switch</td><td>break needed</td><td>break needed (same)</td></tr>
+      </table>
+    </div>
+
+    <h2>অ্যারে / Arrays</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C / C++</th><th>Java</th></tr>
+        <tr><td>Declare</td><td>int arr[5];</td><td>int[] arr = new int[5];</td></tr>
+        <tr><td>Initializer</td><td>int a[] = {1,2,3};</td><td>int[] a = {1,2,3};</td></tr>
+        <tr><td>2D</td><td>int a[2][3];</td><td>int[][] a = new int[2][3];</td></tr>
+        <tr><td>Zero fill</td><td>int a[5] = {0};</td><td>new int[5] (auto zero)</td></tr>
+        <tr><td>Sort</td><td>qsort / sort()</td><td>Arrays.sort(a);</td></tr>
+      </table>
+    </div>
+
+    <h2>স্ট্রিং / Strings</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C</th><th>C++</th><th>Java</th></tr>
+        <tr><td>Type</td><td>char s[50] + '\0'</td><td>std::string</td><td>String (immutable)</td></tr>
+        <tr><td>Length</td><td>strlen(s)</td><td>s.length()</td><td>s.length()</td></tr>
+        <tr><td>Compare</td><td>strcmp(a,b)==0</td><td>a == b</td><td>a.equals(b)  ← important!</td></tr>
+        <tr><td>Access char</td><td>s[i]</td><td>s[i]</td><td>s.charAt(i)</td></tr>
+        <tr><td>Modify</td><td>possible</td><td>possible</td><td>not possible (use StringBuilder)</td></tr>
+        <tr><td>Reverse</td><td>manual</td><td>reverse()</td><td>new StringBuilder(s).reverse()</td></tr>
+      </table>
+    </div>
+
+    <h2>ফাংশন / Methods</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C / C++</th><th>Java</th></tr>
+        <tr><td>Definition</td><td>int add(int a, int b)</td><td>static int add(int a, int b)</td></tr>
+        <tr><td>Call by reference</td><td>pointer / &</td><td>No — pass array/object</td></tr>
+        <tr><td>Overloading</td><td>C++ yes, C no</td><td>Yes</td></tr>
+        <tr><td>Default args</td><td>C++ yes</td><td>No (use overloading)</td></tr>
+      </table>
+    </div>
+
+    <h2>পয়েন্টার ও রেফারেন্স / Pointers & References</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C / C++</th><th>Java</th></tr>
+        <tr><td>Pointer</td><td>int *p = &a;</td><td>No pointers</td></tr>
+        <tr><td>Dereference</td><td>*p</td><td>Not needed</td></tr>
+        <tr><td>Arithmetic</td><td>*(p+i)</td><td>arr[i] or index</td></tr>
+        <tr><td>Member access</td><td>p->data</td><td>p.data (always dot)</td></tr>
+        <tr><td>Null</td><td>NULL / nullptr</td><td>null</td></tr>
+      </table>
+    </div>
+
+    <h2>স্ট্রাকচার / ক্লাস / Structure / Class</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C</th><th>C++</th><th>Java</th></tr>
+        <tr><td>Type</td><td>struct Student {...};</td><td>struct / class</td><td>class Student {...}</td></tr>
+        <tr><td>Variable</td><td>struct Student s1;</td><td>Student s1;</td><td>Student s1 = new Student(...);</td></tr>
+        <tr><td>Initialize</td><td>{"A", 1}</td><td>{"A", 1}</td><td>Constructor</td></tr>
+        <tr><td>Union</td><td>Yes</td><td>Yes</td><td>No (use ByteBuffer)</td></tr>
+      </table>
+    </div>
+
+    <h2>ডাইনামিক মেমরি / Dynamic Memory</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C</th><th>C++</th><th>Java</th></tr>
+        <tr><td>Allocate</td><td>malloc</td><td>new int[n]</td><td>new int[n]</td></tr>
+        <tr><td>Zero fill</td><td>calloc</td><td>new int[n]()</td><td>new int[n] (auto)</td></tr>
+        <tr><td>Resize</td><td>realloc</td><td>vector</td><td>Arrays.copyOf / ArrayList</td></tr>
+        <tr><td>Free</td><td>free(p)</td><td>delete[] p</td><td>GC (set to null)</td></tr>
+      </table>
+    </div>
+
+    <h2>ফাইল হ্যান্ডলিং / File Handling</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>বিষয়</th><th>C</th><th>C++</th><th>Java</th></tr>
+        <tr><td>Write</td><td>fopen("w")</td><td>ofstream</td><td>PrintWriter + FileWriter</td></tr>
+        <tr><td>Read</td><td>fopen("r")</td><td>ifstream</td><td>BufferedReader + FileReader</td></tr>
+        <tr><td>Append</td><td>fopen("a")</td><td>ios::app</td><td>FileWriter(..., true)</td></tr>
+        <tr><td>Close</td><td>fclose</td><td>close()</td><td>try-with-resources</td></tr>
+      </table>
+    </div>
+
+    <h2 class="bn">সংক্ষেপে মনে রাখার নিয়ম (C++ → Java)</h2>
+    <h2 class="en">Quick Rules (C++ → Java)</h2>
+    <div class="tip">
+      <div class="bn">
+        <ul>
+          <li>সবকিছু class এর ভিতরে</li>
+          <li>cout/cin → System.out / Scanner</li>
+          <li>স্ট্রিং তুলনায় অবশ্যই .equals()</li>
+          <li>sizeof → .length / .length()</li>
+          <li>new/delete → শুধু new, GC নিজে ফ্রি করে</li>
+          <li>পয়েন্টার/struct → রেফারেন্স ও class</li>
+        </ul>
+      </div>
+      <div class="en">
+        <ul>
+          <li>Everything inside a class</li>
+          <li>cout/cin → System.out / Scanner</li>
+          <li>Always use .equals() for strings</li>
+          <li>sizeof → .length / .length()</li>
+          <li>new/delete → only new, GC frees</li>
+          <li>Pointers/struct → references & class</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="bn">সবচেয়ে বেশি হওয়া ভুলসমূহ</h2>
+    <h2 class="en">Most Common Mistakes</h2>
+    <div class="tip">
+      <ul>
+        <li>স্ট্রিং তুলনায় == ব্যবহার → সবসময় <code>.equals()</code></li>
+        <li><code>while (n)</code> → <code>while (n != 0)</code></li>
+        <li>arr.length vs str.length() গুলিয়ে ফেলা</li>
+        <li>float x = 3.85; → 3.85f লিখতে হয়</li>
+        <li>main থেকে non-static মেথড ডাকা</li>
+        <li>public class নাম ≠ ফাইলের নাম</li>
+        <li>লোকাল ভ্যারিয়েবল ইনিশিয়ালাইজ না করা</li>
+      </ul>
+    </div>
+
+  </main>
+  <footer>
+    <div class="container">
+      <p><a href="exam.html">← Exam Programs</a> • Conversion Sheet • <a href="index.html">Home</a>
+      <a href="tutorial.html">০. Tutorial</a></p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
